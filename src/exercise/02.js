@@ -3,7 +3,7 @@
 
 import * as React from 'react'
 
-//! EXTRA 3
+  //! EXTRA 3 - custom hook
 // function useLocalStorageState(key, defaultValue= '') {
 //   const [state, setState] = React.useState(
 //     () => window.localStorage.getItem(key) || defaultValue,
@@ -13,7 +13,7 @@ import * as React from 'react'
 //   }, [key, state])
 //   return [state, setState]
 // }
-//* EXTRA 4
+//* EXTRA 4 - flexible localStorage Hook
 function useLocalStorageState(
   key,
   defaultValue= '',
@@ -33,12 +33,12 @@ function useLocalStorageState(
 
   const prevKeyRef = React.useRef(key)
 
-  //! EXTRA 3
+  //! EXTRA 3 - custom hooks
   // React.useEffect(() => {
   //   window.localStorage.setItem(key, state)
   // }, [key, state])
 
-  //* EXTRA 4
+  //* EXTRA 4 - flexible localStorage Hook
   React.useEffect(() => {
     const prevKey = prevKeyRef.current
     if (prevKey !== key) {
@@ -59,22 +59,22 @@ function Greeting({initialName = ''}) {
   // const [name, setName] = React.useState(
   //   window.localStorage.getItem('name') || initialName,
   // )
-  //? EXTRA 1
+  //? EXTRA 1 - lazy state render
   // const [name, setName] = React.useState(
   //   () => window.localStorage.getItem('name') || initialName,
   // )
-  //! EXTRA 3
+  //! EXTRA 3 - custom hook
   const [name, setName] = useLocalStorageState('name', initialName)
 
 
   // 🐨 Here's where you'll use `React.useEffect`.
   // The callback should set the `name` in localStorage.
   // 💰 window.localStorage.setItem('name', name)
-  //* Exercise
+  //* Exercise - action to do on render
   // React.useEffect(() => {
   //   window.localStorage.setItem('name', name)
   // })
-  //todo EXTRA 2
+  //todo EXTRA 2 - effect dependencies
   // React.useEffect(() => {
   //   window.localStorage.setItem('name', name)
   // }, [name])
